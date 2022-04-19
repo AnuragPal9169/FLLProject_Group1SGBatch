@@ -1,0 +1,58 @@
+Entities:
+Admin,Students,Package_Details
+
+
+Attributes:
+Admin - aid(primary key),aemail,aname,apassword
+
+Package_Details - pid(primary key),pname,pstartingdate,pstudentattendance,ptrainerexp,ptrainerlocation,ptrainername,pvehicle
+
+Students - sid(primary key),sage,semail,slocation,sname,spassword,pid(foreign key)
+
+
+Relationships:
+Package_Details is in a One-To-Many relationship with Students
+
+Students is in a Many-To-One relationship with Package_Details
+
+
+mysql> desc admin;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| aid       | int          | NO   | PRI | NULL    | auto_increment |
+| aemail    | varchar(255) | YES  |     | NULL    |                |
+| aname     | varchar(255) | YES  |     | NULL    |                |
+| apassword | varchar(255) | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> desc package_details;
++--------------------+--------------+------+-----+---------+----------------+
+| Field              | Type         | Null | Key | Default | Extra          |
++--------------------+--------------+------+-----+---------+----------------+
+| pid                | int          | NO   | PRI | NULL    | auto_increment |
+| pname              | varchar(255) | YES  |     | NULL    |                |
+| pstartingdate      | date         | YES  |     | NULL    |                |
+| pstudentattendance | varchar(255) | YES  |     | NULL    |                |
+| ptrainerexp        | int          | NO   |     | NULL    |                |
+| ptrainerlocation   | varchar(255) | YES  |     | NULL    |                |
+| ptrainername       | varchar(255) | YES  |     | NULL    |                |
+| pvehicle           | varchar(255) | YES  |     | NULL    |                |
++--------------------+--------------+------+-----+---------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> desc students;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| sid       | int          | NO   | PRI | NULL    | auto_increment |
+| sage      | varchar(255) | YES  |     | NULL    |                |
+| semail    | varchar(255) | YES  |     | NULL    |                |
+| slocation | varchar(255) | YES  |     | NULL    |                |
+| sname     | varchar(255) | YES  |     | NULL    |                |
+| spassword | varchar(255) | YES  |     | NULL    |                |
+| pid       | int          | YES  | MUL | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
+
